@@ -9,9 +9,9 @@ services:
     environment:
       - DB_HOST=db
       - DB_PORT=5432
-      - DB_NAME=sequelizecontainer_db
-      - DB_USER=postgres
-      - DB_PASSWORD=your_postgres_password
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+       - POSTGRES_PASSWORD=${DB_PASSWORD}
     depends_on:
       db:
         condition: service_healthy
@@ -26,9 +26,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=sequelizecontainer_db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=your_postgres_password
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
